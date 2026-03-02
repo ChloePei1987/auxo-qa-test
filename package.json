@@ -1,0 +1,21 @@
+{
+  "name": "auxo-qa-practical",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Auxo QA Cypress practical test",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "lint": "eslint \"cypress/**/*.{ts,js}\"",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.6",
+    "cypress": "^14.5.1",
+    "eslint": "^8.42.0",
+    "eslint-plugin-cypress": "^2.15.2",
+    "prettier": "^2.8.8",
+    "typescript": "^5.1.3"
+  }
+}
