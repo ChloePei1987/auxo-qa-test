@@ -58,14 +58,14 @@ Given('I navigate to the Job List page', () => {
 
 When('I select a created job', () => {
   cy.get(sel.firstRow)
-    .first()
+    .first().should('be.visible')
     .invoke('text')
     .then((t) => {
       selectedJobText = t.trim()
     })
-  cy.wait(300)
+
   cy.get(sel.firstRow).first().find('a').first().click()
-  cy.wait(500)
+  
 })
 
 When('I click on View More to view the job details', () => {
@@ -84,9 +84,8 @@ When('I update valid customer information and submit it', () => {
   }
 
   // Arbitrary wait
-  cy.wait(1500)
 
-  cy.get(sel.viewMoreLink).click()
+  cy.get(sel.viewMoreLink).should('be.visible').click()
   cy.get(sel.customerMoreBtn).first().click()
   cy.contains(sel.dropdownItem, 'Edit Customer Details').click()
 
@@ -98,7 +97,7 @@ When('I update valid customer information and submit it', () => {
 })
 
 Then('On the Edit Job screen, the customer details popup should be closed', () => {
-  cy.wait(500)
+  cy.wait('@getJob')
   cy.get('div.ant-modal-wrap').should('not.exist')
   cy.get('button:contains("More Actions")').should('be.visible')
 })
@@ -117,8 +116,7 @@ When('I mark a created job', () => {
 })
 
 When('I click on the Print Job Card button', () => {
-  cy.get(sel.printBtn).click()
-  cy.wait(1000)
+  cy.get(sel.printBtn).should('be.visible')
 })
 
 Then('Checked Booking will have a print icon', () => {

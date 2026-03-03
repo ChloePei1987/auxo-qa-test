@@ -19,10 +19,6 @@ Cypress.Commands.add('loginUI', () => {
       cy.url().should('contain', '/dashboard', { timeout: 10000 })
     },
     {
-      validate() {
-        cy.visit('/dashboard')
-        cy.url().should('contain', '/dashboard')
-      },
       cacheAcrossSpecs: true,
     }
   )
