@@ -24,10 +24,19 @@ Cypress.Commands.add('loginUI', () => {
   )
 })
 
+Cypress.Commands.add('selectPartCheckbox', (partName: string) => {
+  cy.contains('td', partName).should('exist') 
+    .parent('tr')
+    .within(() => {
+      cy.get('label.ant-checkbox-wrapper').click()
+    })
+})
+
 declare global {
   namespace Cypress {
     interface Chainable {
       loginUI(): Chainable<void>
+      selectPartCheckbox(partName: string): Chainable<void>
     }
   }
 }
